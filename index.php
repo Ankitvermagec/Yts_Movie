@@ -4,8 +4,10 @@ include_once './navbar.php';
 $conn = mysqli_connect('localhost','root','','movie');
 $sql ='SELECT * FROM `post_tb`';
 $result =mysqli_query($conn,$sql);
-// $sql2 ='SELECT * FROM `post_tb` ORDER BY id';
-$result2 =mysqli_query($conn,$sql);         //it's for carousal
+$sql2 ='SELECT * FROM `post_tb`';
+$result2 = mysqli_query($conn,$sql2);         //it's for carousal
+
+$row_all = mysqli_fetch_all($result2);
 ?>
 
 <!-- first rule -->
@@ -159,7 +161,7 @@ for ($i= $row; $i >= 1 ; $i--) {
     
   </div>';
   } else {
-    echo ' <div class="carousel-item active">
+    echo ' <div class="carousel-item">
     <div class="row">
     ';
 
