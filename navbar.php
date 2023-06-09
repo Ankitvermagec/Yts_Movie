@@ -10,10 +10,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="col cl_1">
+        <form action="./connect" method="post">
         <div class="search form-control">
           <i class="fa fa-search" id="fa-search"></i>
-        <input type="search" placeholder="Quick Search" name="" id="">
+        <input id="myInput" type="text" placeholder="Quick Search" name="word">
+        <input id="myBtn" type="submit" name="search_value" value="search"  hidden>
       </div>
+         </form>
+      <script>
+var input = document.getElementById("myInput");
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("myBtn").click();
+  }
+});
+</script>
       </div>
       <div class="col cl_2">
       <div><span onclick="abc(0)">Home</span></div>

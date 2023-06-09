@@ -19,14 +19,16 @@ input.addEventListener("keypress", function(event) {
 </script>
 </form>
 
-
+ 
 <?php 
 if (isset($_POST['search'])) {
 //   echo  $_POST['word'];
 
   $conn = mysqli_connect('localhost','root','','movie');
 
-  $sql = 'SELECT * FROM `post_tb` WHERE `movie_title` LIKE "%'.$_POST['word'].'%" OR `movie_state` LIKE "%'.$_POST['word'].'%"';
+  // $sql = 'SELECT * FROM `post_tb` WHERE `movie_title` LIKE "%'.$_POST['word'].'%" OR `movie_state` LIKE "%'.$_POST['word'].'%"';
+
+  $sql = 'SELECT * FROM `post_tb` WHERE concat(`movie_title`,`movie_state`) LIKE "%'.$_POST['word'].'%"';
   $result= mysqli_query($conn,$sql);
 
   $row = mysqli_fetch_all($result);

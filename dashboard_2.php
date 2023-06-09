@@ -28,7 +28,7 @@ if (isset($dash_2)) {
         <div class="row">
             <div class="col-lg-3">
                 <div class="img" style="background: url(./assets/uploads/'.$dash_2['movie_img_name'].');"></div>
-                <div class="btn btn-success form-control my-2"><i class="fa fa-edit"></i>DOWNLOAD</div>
+                <a target="_blank" href="download?id='.$dash_2['id'].'"><div class="btn btn-success form-control my-2"><i class="fa fa-edit"></i>DOWNLOAD</div></a>
                 <div class="btn btn-danger form-control">Watch Now</div>
         </div>
             <div class="col-lg-4 offset-lg-1">
@@ -52,6 +52,10 @@ if (isset($dash_2)) {
 }
 
 ?>
+
+
+<a onclick="return confirm('down')" target="_blank" href="./assets/img/a_a.jpg"><div class="btn btn-success form-control my-2"><i class="fa fa-edit"></i>DOWNLOAD</div></a>
+
 <style>
     .v_hide{
         display: none;

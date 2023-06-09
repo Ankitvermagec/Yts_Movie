@@ -1,6 +1,8 @@
 <?php 
+session_start();
 include_once './header.php';
 include_once './navbar.php';
+
 $conn = mysqli_connect('localhost','root','','movie');
 $sql ='SELECT * FROM `post_tb`';
 $result =mysqli_query($conn,$sql);
@@ -8,6 +10,8 @@ $sql2 ='SELECT * FROM `post_tb`';
 $result2 = mysqli_query($conn,$sql2);         //it's for carousal
 
 $row_all = mysqli_fetch_all($result2);
+
+
 ?>
 
 <!-- first rule -->
@@ -89,7 +93,50 @@ $row_all = mysqli_fetch_all($result2);
     border-radius: 7px;
     padding: 20px;
 }
+ .bb{
+  /* background: linear-gradient(orange,yellow); */
+  border-bottom: 2px solid white;
+}
 </style>
+
+
+<!-- it's for the searching -->
+
+<section class="movie_ bb">
+  <div class="container">
+    <div class="row">
+<?php
+    if (isset($_SESSION['row'])) {
+      /* var_dump(($_SESSION['row'])); */  
+      $row = $_SESSION['row'];
+ for ($i=0 ; $i < count($_SESSION['row']); $i++) { 
+  echo '<div class="col-lg-3">
+  <div onmouseover="show('.$i.')"  onmouseleave="hide('.$i.')" class="img" style="background: url(./assets/uploads/'.$row[$i][3].');">
+    <div class="detail">
+    <h1>'.$row[$i][1].'</h1>          
+    <a href="dashboard_2?id='.$row[$i][0].'"><div class="btn btn-dark">view</div></a>
+    </div>
+  </div>
+</div>';
+// $i += 1;
+
+ }
+    }
+ 
+ ?>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- it's for the searching -->
+
+
+
+
+
+
 
 <section class="movie_">
   <div class="container">

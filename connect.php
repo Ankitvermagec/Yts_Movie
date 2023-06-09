@@ -167,9 +167,14 @@ elseif (isset($_POST['Registeration'])) {
   date_default_timezone_set("Asia/Calcutta"); //India time (GMT+5:30)
 echo   $upload_dateTime = date('d-M-Y h:i:sa');
 
+
+
+
   
 if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-   
+
+ 
+  
   $sql =  'INSERT INTO `post_tb`(`movie_title`, `upload_id`, `movie_img_name`, `movie_language`, `movie_year`, `movie_rating`, `movie_genre`, `movie_cast`, `movie_state`, `upload_dateTime`) VALUES ("'.$title.'","'.$upload_id.'","'.$img_name.'","'.$lang.'","'.$Movie_Year.'","'.$Rating.'","'.$gener.'","'.$Movie_Cast.'","'.$state.'","'.$upload_dateTime.'")';
     mysqli_query($conn, $sql);
     // echo 'its working';
@@ -181,7 +186,19 @@ if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
   mysqli_query($conn, $sql);
 
   }
-}else {
+}elseif (isset($_POST['search_value'])) {
+  // echo $_POST['word'];
+  $conn = mysqli_connect('localhost','root','','movie');
+
+  $sql = 'SELECT * FROM `post_tb` WHERE `movie_title` LIKE "%'.$_POST['word'].'%" OR `movie_state` LIKE "%'.$_POST['word'].'%"';
+  $result= mysqli_query($conn,$sql);
+
+  $row = mysqli_fetch_all($result);
+  $_SESSION['row'] = $row;
+  header('location:index.php');
+
+}
+else {
     echo 'not working';
 }
 

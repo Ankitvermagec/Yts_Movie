@@ -17,7 +17,7 @@ $row_all = mysqli_fetch_all($result);
 
 
 
-
+<!-- bootstrap class had attached here for the slide/fade of image -->
 <section class="coder">
 <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
